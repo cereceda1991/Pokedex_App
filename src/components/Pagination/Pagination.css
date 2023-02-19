@@ -1,0 +1,32 @@
+.pagination__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination__container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    box-shadow: 2px 2px 8px grey;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #6c79db;
+    color: #fff;
+}
+
+.pagination__container button:disabled {
+    background-color: grey;
+}
+
+.pagination__container p {
+    margin-left: 5px;
+    font-weight: 500;
+}
+
+.pagination__container input {
+    width: 2rem;
+    font-weight: 400;
+    padding-left: 2rem;
+}

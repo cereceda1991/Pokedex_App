@@ -1,0 +1,86 @@
+ul {
+    margin: 0;
+    margin-top: 80px;
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 100px;
+    z-index: 0;
+
+    @media(max-width: 768px){
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media(max-width: 420px){
+        grid-template-columns: 1fr;
+        padding-left: 0;
+    }
+    
+    a {
+        text-decoration: none;
+        object-fit: cover;
+        transition: 0.5s;
+    }
+
+    a:hover {
+        transform: scale(1.1);
+    }
+
+    .pokemon-card {
+        height: 235px;
+        width: 250px;
+        display: flex;
+        position: relative;
+        border-radius: 30px;
+        color: #fff;
+        z-index: -5;
+        text-shadow: 1px 1px 2px black;
+        box-shadow: -10px -10px 15px rgb(58 58 58 / 9%), 10px 10px 15px rgb(66 66 66 / 35%);
+        margin: 30px;
+        padding: 5px;
+        position: relative;
+
+        @media(max-width: 768px){
+            height: 250px;
+            width: 290px;
+        }
+    
+        &__container {
+            margin-left: 10px;
+            text-decoration: none;
+            position: absolute;
+    
+            h1 {
+                text-transform: capitalize;
+                text-decoration: none;
+                margin-bottom: 0;
+                font-size: 1.5rem;
+                margin-top: 10px;
+            }
+
+            div {
+                background-color: rgba(255, 255, 255, 0.3);
+                border-radius: 20px;
+                padding: 3px 10px;
+                line-height: 16px;
+                align-self: flex-start;
+                text-transform: capitalize;
+                z-index: 5;
+                margin: 4px 4px 4px 4px;
+                width: 100px;
+            }
+        }
+    
+        &__img {
+            width: 10em;
+            height: 10em;
+            margin-top: 30px;
+            position: absolute;
+            right: -40px;
+            top: 40px;
+            z-index: 1;
+        }
+    }        
+    
+}
+
