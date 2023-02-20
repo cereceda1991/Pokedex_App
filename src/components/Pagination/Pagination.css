@@ -21,6 +21,7 @@
 
 .pagination__container button:disabled {
     background-color: grey;
+    cursor: not-allowed;
 }
 
 .pagination__container p {
