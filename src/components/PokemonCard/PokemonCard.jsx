@@ -27,6 +27,7 @@ const PokemonCard = ({ url }) => {
             })
     }, [url]);
 
+    console.log(url);
     document.body.style = "background: #fff"
 
     return (

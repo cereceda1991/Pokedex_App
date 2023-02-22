@@ -55,3 +55,31 @@
     gap: 1rem;
     justify-content: center;
 }
+
+.container__search {
+    position: relative;
+}
+
+.container__search input {
+    outline: none;
+    font-family: inherit;
+    padding: .3rem 2rem .3rem 1rem;
+    border: none;
+    border-radius: .2rem;
+    text-transform: capitalize;
+    box-shadow: -10px -10px 15px rgb(58 58 58 / 9%), 10px 10px 15px rgb(66 66 66 / 35%);
+}
+
+.container__search button {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    top: 10%;
+    right: 0;
+    font-size: 1.2rem;
+}
+
+.container__error {
+    margin-top: 2rem;
+}
