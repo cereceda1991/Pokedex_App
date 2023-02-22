@@ -85,8 +85,7 @@
     text-transform: capitalize;
 }
 
-/* 
-div {
+.container__type div {
     border: 1px solid;
     width: 80%;
     height: 50px;
@@ -98,8 +97,7 @@ div {
     border-radius: 5px;
     color: #fff;
     text-shadow: 1px 1px 2px black;
-} */
-
+}
 
 .container__ability {
     border-radius: .5rem;
@@ -112,9 +110,7 @@ div {
     text-transform: capitalize;
 }
 
-
-/* 
-div {
+.container__ability div {
     border: 1px solid;
     width: 80%;
     height: 50px;
@@ -126,7 +122,7 @@ div {
     border-radius: 5px;
     background-color: lightgrey;
     font-weight: 500;
-} */
+}
 
 .pokemon__detail-column {
     width: 100%;
@@ -143,23 +139,21 @@ div {
 .progress {
     height: 35px;
     width: 80%;
-    border-radius: .5rem;
+    border-radius: .1rem;
     background-color: #E5E5E5;
     margin-bottom: 1rem;
     position: relative;
-    border: 1px solid gray;
 
 }
 
 .progress-bar {
     height: 100%;
-    background-color: #EFBC72;
+    background: linear-gradient(90deg, #FCD676 -2.25%, #E6901E 133.18%);
     display: flex;
     align-items: center;
-    border-radius: .5rem;
+    border-radius: .1rem;
     text-align: center;
     width: 100%;
-    border-right: 1px solid gray;
 }
 
 .progress-text {

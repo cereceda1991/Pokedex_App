@@ -1,58 +1,78 @@
 .pokemon__card-container {
-    margin-left: 1rem;
-    text-decoration: none;
-    position: absolute;
+    padding: .5rem;
+    border-radius: .5rem;
+    width: 250px;
 }
 
 .pokemon__card {
-    width: 250px;
-    height: 235px;
-    display: flex;
-    border-radius: 1rem;
-    color: #fff;
-    text-shadow: 1px 1px 2px black;
-    box-shadow: -10px -10px 15px rgb(58 58 58 / 9%), 10px 10px 15px rgb(66 66 66 / 35%);
-    margin: 1rem 2rem;
-    padding: .1rem;
     position: relative;
-}
-
-.pokemon__card h2 {
-    text-transform: capitalize;
-    text-decoration: none;
-}
-
-.pokemon__card-types {
+    display: flex;
+    flex-direction: column;
+    color: #9F9F9F;
     border-radius: .5rem;
+    box-shadow: -10px -10px 15px #3a3a3a17, 10px 10px 15px rgb(66 66 66 / 35%);
+}
+
+.pokemon__card-info {
+    border-radius: 0rem 0rem .5rem .5rem;
     text-transform: capitalize;
-    background-color: rgba(255, 255, 255, 0.3);
-    padding: 0rem 1rem;
-    width: min-content;
+    background-color: #fff;
+    padding: 1rem;
 }
 
-.pokemon__card img {
-    width: 10rem;
-    height: 10rem;
-    position: absolute;
-    right: -3rem;
-    top: 5rem;
-}
-
-ul {
-    width: 100%;
-    margin: 5rem auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    justify-content: center;
-    border-radius: 1rem;
-}
-
-a {
+.pokemon__card-info h2 {
+    text-transform: capitalize;
     text-decoration: none;
-    transition: transform 1s ease;
+    text-align: center;
+    padding-top: 1.5rem;
+    text-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
 }
 
-a:hover {
+.pokemon__types-container {
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+}
+
+.pokemon__types {
+    width: 40%;
+    text-align: center;
+    padding: .2rem;
+    text-transform: capitalize;
+    color: white;
+    font-weight: 700;
+    border-radius: .2rem;
+    text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.pokemon__card-header {
+    width: 100%;
+    height: 8rem;
+}
+
+.pokemon__card-img {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+}
+
+.pokemon__stats {
+    display: flex;
+    padding: 1rem .2rem 0rem .2rem;
+    width: 100%;
+    gap: .7rem;
+    justify-content: center;
+}
+
+.pokemon__stats-icons {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: .1rem;
+    transition: transform 5ms ease;
+}
+
+.pokemon__stats-icons:hover {
     transform: scale(1.1);
+    color: black;
 }

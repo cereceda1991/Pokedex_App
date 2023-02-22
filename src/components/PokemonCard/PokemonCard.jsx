@@ -2,7 +2,12 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import './PokemonCard.css'
-import ValidateColor from "../../data/validateColor"
+import ColorName from "../../data/ColorName";
+import BgColor from "../../data/BgColor"
+import { RiSwordLine } from "react-icons/ri";
+import { RiSwordFill } from "react-icons/ri";
+import { RiShieldFlashFill } from "react-icons/ri";
+
 
 const PokemonCard = ({ url }) => {
 
@@ -12,44 +17,58 @@ const PokemonCard = ({ url }) => {
         axios(url)
             .then(res => {
                 setPokemon({
-                    name: res.data.name,
-                    id: res.data.id,
+                    name: res.data?.name,
+                    id: res.data?.id,
                     image: res.data?.sprites.other['official-artwork']?.front_default,
-                    type: res.data.types,
-                    hp: res.data.stats[0].base_stat,
-                    attack: res.data.stats[1].base_stat,
-                    defense: res.data.stats[2].base_stat,
-                    speed: res.data.stats[5].base_stat,
+                    type: res.data?.types,
+                    stats: res.data?.stats,
                 })
-                setType(res.data.types[0].type.name)
+                setType(res.data?.types[0].type.name)
             })
     }, [url]);
-
 
     document.body.style = "background: #fff"
 
     return (
         <Link to={`/pokedex/${pokemon?.id}`}>
-            <div className="pokemon__card"
-                style={{ background: ValidateColor(type) }}>
-                <div className="pokemon__card-container">
-                    <h2>{pokemon.name}</h2>
-                    <div className="pokemon__card-types">
-                        <h5>
-                            {
-                                pokemon.type.map((value) => {
-                                    return (
-                                        <span key={value.slot}>{value.type.name} <br /></span>
-                                    )
-                                })}
-                        </h5>
+            <div className="pokemon__card-container"
+                style={{ background: ColorName(type) }}>
+                <div className="pokemon__card">
+                    <div className="pokemon__card-header" style={{ background: BgColor[type] }}>
+                        <img className="pokemon__card-img" src={pokemon.image} alt={pokemon.image} />
                     </div>
-                    <div><b>Hp:</b> {pokemon.hp}</div>
-                    <div><b>Attack:</b> {pokemon.attack}</div>
-                    <div><b>Defense:</b> {pokemon.defense}</div>
-                    <div><b>Speed:</b> {pokemon.speed}</div>
+                    <div className="pokemon__card-info">
+                        <h2 style={{ color: ColorName(type) }}>
+                            {pokemon.name}
+                        </h2>
+                        <div>
+                            <div className="pokemon__types-container">
+                                {pokemon.type.map((value) => {
+                                    const typeColor = BgColor[value.type.name];
+                                    return (
+                                        <div className="pokemon__types" key={value.slot} style={{ background: typeColor }}>
+                                            {value.type.name}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                        <div className="pokemon__stats">
+                            {pokemon?.stats?.map((stat) => (
+                                <div className="pokemon__stats-icons" key={stat.stat.name}>
+                                    {stat.stat.name === "speed" && <i className='bx bx-run' />}
+                                    {stat.stat.name === "defense" && <i className='bx bx-shield' />}
+                                    {stat.stat.name === "attack" && <RiSwordLine />}
+                                    {stat.stat.name === "hp" && <i className='bx bx-bolt-circle' />}
+                                    {stat.stat.name === "special-attack" && <RiSwordFill />}
+                                    {stat.stat.name === "special-defense" && <RiShieldFlashFill />}
+                                    <span>{stat.base_stat ? stat.base_stat : "N/A"}</span>
+                                    {/* <span className="stat-name">{stat.stat.name}</span> */}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-                <img className="pokemon-card__img" src={pokemon.image} alt={pokemon.image} />
             </div>
         </Link>
     )

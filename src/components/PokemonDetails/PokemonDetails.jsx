@@ -2,9 +2,9 @@ import axios from "axios"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import ValidateColor from "../../data/validateColor"
-import pokemonlogo from "../../assets/pokemon_logo.png"
 import './PokemonDetails.css'
+import BgColor from "../../data/BgColor"
+
 
 const PokemonDetails = () => {
     const { id } = useParams()
@@ -33,7 +33,8 @@ const PokemonDetails = () => {
             })
     }, [id])
 
-    document.body.style = `background: ${ValidateColor(type)}`
+    document.body.style = `background: ${BgColor[type]}`
+
 
     return (
         <div className="pokemon__detail-container">
@@ -41,14 +42,16 @@ const PokemonDetails = () => {
                 <button><i className='bx bx-left-arrow-alt'></i></button>
             </Link>
             <div className="pokemon__detail-data">
+                <h1 className="id">#{data.id}</h1>
                 <img src={data.image} />
+                <hr></hr>
                 <h1 className="name">{data.name}</h1>
+
                 <div className="data">
                     <div>{data.height} <br /><span>Height</span></div>
                     <div>{data.weight} <br /><span>Weigth</span></div>
                 </div>
                 <h1>{data.type1}</h1>
-                <h1 className="id">#{data.id}</h1>
             </div>
             <div className="pokemon__detail-container2">
                 <div className="container__type">
@@ -58,7 +61,7 @@ const PokemonDetails = () => {
                             return (
                                 <motion.div
                                     whileHover={{ scale: 1.1 }}
-                                    style={{ background: ValidateColor(res.type.name) }} key={res.slot}>{res.type.name}</motion.div>
+                                    style={{ background: BgColor[res.type.name] }} key={res.slot}>{res.type.name}</motion.div>
                             )
                         })
                     }

@@ -27,7 +27,8 @@ const Home = () => {
             <h2>Give me you name to start!</h2>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <input type="text" />
-                <button><RiSendPlaneFill className='icon' /></button>
+                <button><RiSendPlaneFill className='icon' />
+                </button>
             </form>
         </div>
     )
