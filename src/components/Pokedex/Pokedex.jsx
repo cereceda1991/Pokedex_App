@@ -14,8 +14,6 @@ const Pokedex = () => {
     const [pokemons, setPokemons] = useState([])
     const [page, setPage] = useState(1)
     const [forPage, setForPage] = useState(16)
-
-
     const [searchQuery, setSearchQuery] = useState("");
     const [pokemonData, setPokemonData] = useState(null);
     const [error, setError] = useState(null);
@@ -36,30 +34,31 @@ const Pokedex = () => {
                 .catch(err => console.log(err))
     }, [])
 
-
     const selectedType = (e) => {
-        const url = e.target.value
+        const url = e.target.value;
 
-        if (url === 'all-types') {
+        if (url === "all-types") {
             axios
                 .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1279")
-                .then(res => {
-                    setPokemons(res?.data?.results)
-                    setPokemonData(null)
-                    setPage(1)
+                .then((res) => {
+                    setPokemons(res?.data?.results);
+                    setPokemonData(null);
+                    setPage(1);
+                    setForPage(16); // re-enable pagination
                 })
-                .catch(err => console.log(err))
+                .catch((err) => console.log(err));
         } else {
             axios
                 .get(url)
-                .then(res => {
-                    setPokemons(res.data.pokemon)
-                    setPokemonData(null)
-                    setPage(1)
+                .then((res) => {
+                    setPokemons(res.data.pokemon);
+                    setPokemonData(null);
+                    setPage(1);
+                    setForPage(16); // re-enable pagination
                 })
-                .catch(err => console.log(err))
+                .catch((err) => console.log(err));
         }
-    }
+    };
 
 
     useEffect(() => {
@@ -69,15 +68,19 @@ const Pokedex = () => {
                 .then((response) => {
                     setPokemonData(response.data);
                     setError(null);
-                    setPage(1)
+                    setPage(1);
+                    setForPage(9999); // disable pagination
                 })
                 .catch((error) => {
                     console.error(error);
-                    setError("❌ No se ha encontrado el Pokemon. Intente de nuevo");
+                    setError(
+                        "❌ No se ha encontrado el Pokemon. Intente de nuevo"
+                    );
                     setPokemonData(null);
                 });
         }
     }, [searchQuery]);
+
 
 
     const handleForPageChange = (e) => {
