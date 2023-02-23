@@ -17,7 +17,7 @@ const Pokedex = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [pokemonData, setPokemonData] = useState(null);
     const [error, setError] = useState(null);
-
+    const [searchInput, setSearchInput] = useState("");
 
     const totalPages = Math.ceil(pokemons.length / forPage)
 
@@ -92,6 +92,11 @@ const Pokedex = () => {
         setSearchQuery(event.target.search.value.toLowerCase());
     };
 
+    const handleSearchInputFocus = () => {
+        setSearchInput("");
+        setSearchQuery("");
+    };
+
     return (
         <div className="pokedex__container">
             <div className="pokedex__container-titles">
@@ -101,8 +106,21 @@ const Pokedex = () => {
             <div className="pokedex__container-selects">
                 <div >
                     <form className="container__search" onSubmit={handleSearch}>
+                        {/* <input
+                            type="text"
+                            name="search"
+                            placeholder="Search for id or name"
+                            onFocus={handleFocus}
+                        /> */
 
-                        <input type="text" name="search" placeholder="Search for id or name" />
+                            <input
+                                type="text"
+                                name="search"
+                                placeholder="Search for id or name"
+                                value={searchInput}
+                                onChange={(e) => setSearchInput(e.target.value)}
+                                onFocus={handleSearchInputFocus}
+                            />}
 
                         <button type="submit"><i className='bx bx-search-alt' /></button>
                     </form>

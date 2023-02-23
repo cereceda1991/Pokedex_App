@@ -19,7 +19,7 @@ const PokemonCard = ({ url }) => {
                 setPokemon({
                     name: res.data?.name,
                     id: res.data?.id,
-                    image: res.data?.sprites.other['official-artwork']?.front_default,
+                    image: res.data?.sprites?.other['official-artwork']?.front_default,
                     type: res.data?.types,
                     stats: res.data?.stats,
                 })
