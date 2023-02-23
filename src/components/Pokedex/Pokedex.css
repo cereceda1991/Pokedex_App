@@ -29,18 +29,19 @@
 
 .pokedex__container-selects {
     display: flex;
+    gap: 1rem;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    gap: .8rem;
 }
 
-.pokedex__container select {
+.pokedex__container-selects select {
     border: none;
-    border-radius: .5rem;
+    border-radius: .2rem;
     color: grey;
+    font-size: 1.1rem;
     outline: none;
     box-shadow: -10px -10px 15px rgb(58 58 58 / 9%), 10px 10px 15px rgb(66 66 66 / 35%);
-    padding: .3rem;
     text-transform: capitalize;
 }
 
@@ -57,7 +58,8 @@
 }
 
 .container__search {
-    position: relative;
+    display: flex;
+    gap: .2rem;
 }
 
 .container__search input {
@@ -66,18 +68,19 @@
     padding: .3rem 2rem .3rem 1rem;
     border: none;
     border-radius: .2rem;
-    text-transform: capitalize;
     box-shadow: -10px -10px 15px rgb(58 58 58 / 9%), 10px 10px 15px rgb(66 66 66 / 35%);
 }
 
 .container__search button {
-    position: absolute;
-    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
     border: none;
     cursor: pointer;
-    top: 10%;
-    right: 0;
+    border-radius: .5rem;
     font-size: 1.2rem;
+    color: white;
 }
 
 .container__error {

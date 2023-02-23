@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import './Pagination.css'
 
@@ -40,12 +39,11 @@ const Pagination = ({ page, setPage, totalPages }) => {
 
     return (
         <div className='pagination__container'>
-            <motion.button
-                whileHover={{ scale: 1.1 }}
+            <button
                 disabled={page <= 1}
                 onClick={previousPage}>
                 <i className='bx bx-left-arrow-alt'></i>
-            </motion.button>
+            </button>
 
             <input
                 onChange={onChange}
@@ -55,13 +53,12 @@ const Pagination = ({ page, setPage, totalPages }) => {
                 value={input}
             />
             <p>de {totalPages}</p>
-            <motion.button
-                whileHover={{ scale: 1.1 }}
+            <button
                 disabled={page >= totalPages}
                 onClick={nextPage}
             >
                 <i className='bx bx-right-arrow-alt'></i>
-            </motion.button>
+            </button>
         </div>
     )
 }

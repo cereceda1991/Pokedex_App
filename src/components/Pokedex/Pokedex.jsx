@@ -101,10 +101,8 @@ const Pokedex = () => {
 
                         <input type="text" name="search" placeholder="Search for id or name" />
 
-                        <button type="submit"><i class='bx bx-search-alt' /></button>
+                        <button type="submit"><i className='bx bx-search-alt' /></button>
                     </form>
-
-
                 </div>
                 <span>Select a type: </span>
                 <select onChange={selectedType}>
@@ -143,6 +141,7 @@ const Pokedex = () => {
             <Pagination
                 page={page} setPage={setPage} totalPages={totalPages} />
         </div>
+
     )
 }
 

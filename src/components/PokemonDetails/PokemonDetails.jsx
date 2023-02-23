@@ -1,9 +1,9 @@
 import axios from "axios"
-import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import './PokemonDetails.css'
 import BgColor from "../../data/BgColor"
+import ColorName from "../../data/ColorName";
 
 
 const PokemonDetails = () => {
@@ -39,19 +39,28 @@ const PokemonDetails = () => {
     return (
         <div className="pokemon__detail-container">
             <Link to='/pokedex'>
-                <button><i className='bx bx-left-arrow-alt'></i></button>
+                <button><i className='bx bx-left-arrow-alt' /></button>
             </Link>
             <div className="pokemon__detail-data">
-                <h1 className="id">#{data.id}</h1>
-                <img src={data.image} />
-                <hr></hr>
-                <h1 className="name">{data.name}</h1>
-
-                <div className="data">
-                    <div>{data.height} <br /><span>Height</span></div>
-                    <div>{data.weight} <br /><span>Weigth</span></div>
+                <div className="pokemon__detail-header"  >
+                    <img src={data.image} />
                 </div>
-                <h1>{data.type1}</h1>
+                <div className="pokemon__detail-dates">
+                    <div>
+                        <h2>{data.height}</h2>
+                        <h4>Height</h4>
+                    </div><div>
+                        <h2>{data.weight}</h2>
+                        <h4>Weigth</h4>
+                    </div>
+                </div>
+                <div className="pokemon__detail-name">
+                    <span style={{ background: BgColor[type] }}></span >
+                    <h1 style={{ color: ColorName(type) }}> {data.name}</h1>
+                    <span style={{ background: BgColor[type] }}></span >
+                </div>
+                <div className="container__id" >
+                    <h3 style={{ background: BgColor[type] }}>#{data.id}</h3></div>
             </div>
             <div className="pokemon__detail-container2">
                 <div className="container__type">
@@ -59,9 +68,8 @@ const PokemonDetails = () => {
                     {
                         data.type?.map((res) => {
                             return (
-                                <motion.div
-                                    whileHover={{ scale: 1.1 }}
-                                    style={{ background: BgColor[res.type.name] }} key={res.slot}>{res.type.name}</motion.div>
+                                <div
+                                    style={{ background: BgColor[res.type.name] }} key={res.slot}>{res.type.name}</div>
                             )
                         })
                     }
@@ -71,9 +79,9 @@ const PokemonDetails = () => {
                     {
                         data.ability?.map((res) => {
                             return (
-                                <motion.div
-                                    whileHover={{ scale: 1.1 }}
-                                    key={res.slot}>{res.ability.name}</motion.div>
+                                <div
+
+                                    key={res.slot}>{res.ability.name}</div>
                             )
                         })
                     }
@@ -83,42 +91,56 @@ const PokemonDetails = () => {
                 <h1>Stats base</h1>
                 <h4>HP</h4>
                 <div className="progress">
-                    <div className="progress-bar" style={{ width: data.hp * 2.4 }}>
-                        <span className="progress-text">{data.hp}pts</span>
-                    </div>
+                    {data.hp !== undefined && (
+                        <div className="progress-bar" style={{ width: data.hp * 2.4 }}>
+                            <span className="progress-text">{data.hp}pts</span>
+                        </div>
+                    )}
                 </div>
                 <h4>Speed</h4>
                 <div className="progress">
-                    <div className="progress-bar" style={{ width: data.speed * 2.4 }}>
-                        <span className="progress-text">{data.speed}pts</span>
-                    </div>
+                    {data.speed !== undefined && (
+                        <div className="progress-bar" style={{ width: data.speed * 2.4 }}>
+                            <span className="progress-text">{data.speed}pts</span>
+                        </div>
+                    )}
                 </div>
                 <h4>Attack</h4>
                 <div className="progress">
-                    <div className="progress-bar" style={{ width: data.attack * 2.4 }}>
-                        <span className="progress-text">{data.attack}pts</span>
-                    </div>
+                    {data.attack !== undefined && (
+                        <div className="progress-bar" style={{ width: data.attack * 2.4 }}>
+                            <span className="progress-text">{data.attack}pts</span>
+                        </div>
+                    )}
                 </div>
                 <h4>Defense</h4>
                 <div className="progress">
-                    <div className="progress-bar" style={{ width: data.defense * 2.4 }}>
-                        <span className="progress-text">{data.defense}pts</span>
-                    </div>
+                    {data.defense !== undefined && (
+                        <div className="progress-bar" style={{ width: data.defense * 2.4 }}>
+                            <span className="progress-text">{data.defense}pts</span>
+                        </div>
+                    )}
                 </div>
             </div>
+
             <div className="pokemon__detail-movements">
-                <h1>Movements</h1>
-                {
-                    data.movements?.map((res) => {
-                        return (
-                            <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                key={res.slot}>{res.move.name}</motion.div>
-                        )
-                    })
-                }
+                <div className="pokemon__detail-movements-title">
+                    <h1>Movements</h1>
+                    <hr />
+                </div>
+                <div className="container__detail-movements">
+                    {
+                        data.movements?.map((res) => {
+                            return (
+
+                                <span className="detail__movements" key={res.move.url}>{res.move.name}</span>
+                            )
+                        })
+                    }
+                </div>
             </div>
-        </div>
+
+        </div >
     )
 }
 

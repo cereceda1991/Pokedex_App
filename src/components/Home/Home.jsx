@@ -15,6 +15,7 @@ const Home = () => {
 
         dispatch(changeName(e.target[0].value))
 
+
         navigate('/pokedex')
     }
 

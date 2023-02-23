@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import './PokemonCard.css'
 import ColorName from "../../data/ColorName";
-import BgColor from "../../data/BgColor"
+import BgColor from "../../data/BgColor";
 import { RiSwordLine } from "react-icons/ri";
 import { RiSwordFill } from "react-icons/ri";
 import { RiShieldFlashFill } from "react-icons/ri";
@@ -27,7 +27,6 @@ const PokemonCard = ({ url }) => {
             })
     }, [url]);
 
-    console.log(url);
     document.body.style = "background: #fff"
 
     return (
@@ -40,7 +39,7 @@ const PokemonCard = ({ url }) => {
                     </div>
                     <div className="pokemon__card-info">
                         <h2 style={{ color: ColorName(type) }}>
-                            {pokemon.name}
+                            #{pokemon.id} {pokemon.name}
                         </h2>
                         <div>
                             <div className="pokemon__types-container">

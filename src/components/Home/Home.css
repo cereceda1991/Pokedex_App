@@ -24,8 +24,7 @@
 }
 
 .home__card h2 {
-    font-weight: 600;
-
+    font-weight: 500;
 }
 
 .home__card form {
@@ -37,7 +36,7 @@
     border: none;
     border-radius: 1.7rem;
     outline: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: grey;
     box-shadow: -10px -10px 15px rgb(58 58 58 / 9%), 10px 10px 15px rgb(66 66 66 / 35%);
     transition: .5s;
@@ -51,16 +50,18 @@
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: max-content;
+    height: 100%;
     position: absolute;
     right: 0;
+    aspect-ratio: 1;
 }
 
 .icon {
     display: flex;
+    width: 100%;
     color: #fff;
-    font-size: 2.1rem;
-    padding-left: .2rem;
+    font-size: 2rem;
+    justify-content: center;
     align-items: center;
 }
