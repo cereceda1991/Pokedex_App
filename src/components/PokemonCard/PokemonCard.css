@@ -16,7 +16,7 @@
 .pokemon__card-info {
     border-radius: 0rem 0rem .5rem .5rem;
     text-transform: capitalize;
-    background-color: #fff;
+    background: url(../../assets/body_bg.png);
     padding: 1rem;
 }
 
