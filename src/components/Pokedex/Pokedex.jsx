@@ -19,6 +19,7 @@ const Pokedex = () => {
     const [error, setError] = useState(null);
     const [searchInput, setSearchInput] = useState("");
 
+
     const totalPages = Math.ceil(pokemons.length / forPage)
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const Pokedex = () => {
 
             axios
                 .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1279")
-                .then(res => setPokemons(res?.data?.results))
+                .then(res => setPokemons(res.data.results))
                 .catch(err => console.log(err))
     }, [])
 
@@ -41,10 +42,12 @@ const Pokedex = () => {
             axios
                 .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1279")
                 .then((res) => {
-                    setPokemons(res?.data?.results);
+                    setPokemons(res.data.results);
                     setPokemonData(null);
                     setPage(1);
-                    setForPage(16); // re-enable pagination
+                    setForPage(16);
+                    setError(false);
+                    setSearchInput("");
                 })
                 .catch((err) => console.log(err));
         } else {
@@ -54,7 +57,9 @@ const Pokedex = () => {
                     setPokemons(res.data.pokemon);
                     setPokemonData(null);
                     setPage(1);
-                    setForPage(16); // re-enable pagination
+                    setForPage(16);
+                    setError(false);
+                    setSearchInput("");
                 })
                 .catch((err) => console.log(err));
         }
@@ -92,10 +97,15 @@ const Pokedex = () => {
         setSearchQuery(event.target.search.value.toLowerCase());
     };
 
-    const handleSearchInputFocus = () => {
+    const handleSearchInputFocus = (e) => {
+        e.preventDefault();
+        if (searchInput.length === 0) {
+            return
+        }
         setSearchInput("");
-        setSearchQuery("");
     };
+
+    console.log(pokemons);
 
     return (
         <div className="pokedex__container">
@@ -106,24 +116,18 @@ const Pokedex = () => {
             <div className="pokedex__container-selects">
                 <div >
                     <form className="container__search" onSubmit={handleSearch}>
-                        {/* <input
+                        {<input
                             type="text"
                             name="search"
                             placeholder="Search for id or name"
-                            onFocus={handleFocus}
-                        /> */
-
-                            <input
-                                type="text"
-                                name="search"
-                                placeholder="Search for id or name"
-                                value={searchInput}
-                                onChange={(e) => setSearchInput(e.target.value)}
-                                onFocus={handleSearchInputFocus}
-                            />}
+                            value={searchInput}
+                            onChange={(e) => setSearchInput(e.target.value)}
+                            onFocus={handleSearchInputFocus}
+                        />}
 
                         <button type="submit"><i className='bx bx-search-alt' /></button>
                     </form>
+
                 </div>
                 <span>Select a type: </span>
                 <select onChange={selectedType}>
@@ -142,25 +146,32 @@ const Pokedex = () => {
                     <option value="20">20</option>
                 </select>
             </div>
-            {error && <div className="container__error">{error}</div>}
-            <div className="container__pokemons-card">
-                {pokemonData ? (
-                    <PokemonCard url={`https://pokeapi.co/api/v2/pokemon/${searchQuery}`} />
-                ) : (
-                    pokemons.length > 0 &&
-                    pokemons.slice((page - 1) * forPage, (page - 1) * forPage + forPage)
-                        ?.map((item, index) => (
-                            <PokemonCard
-                                url={item.pokemon ? item.pokemon.url : item.url}
-                                key={index}
-                            />
-                        ))
-                )}
 
-            </div>
+            {error ? (
+                <p>{error}</p>
+            ) : (
+                <>
+                    <div className="container__pokemons-card">
+                        {pokemonData ? (
+                            <PokemonCard url={`https://pokeapi.co/api/v2/pokemon/${searchQuery}`} />
+                        ) : (
+                            pokemons.length > 0 &&
+                            pokemons.slice((page - 1) * forPage, (page - 1) * forPage + forPage)
+                                ?.map((item, index) => (
+                                    <PokemonCard
+                                        url={item.pokemon ? item.pokemon.url : item.url}
+                                        key={index}
+                                    />
+                                ))
+                        )}
 
-            <Pagination
-                page={page} setPage={setPage} totalPages={totalPages} />
+                    </div>
+                    <Pagination
+                        page={page} setPage={setPage} totalPages={totalPages} />
+                </>
+
+            )}
+
         </div>
 
     )

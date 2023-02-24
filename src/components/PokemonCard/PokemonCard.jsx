@@ -43,7 +43,7 @@ const PokemonCard = ({ url }) => {
                         </h2>
                         <div>
                             <div className="pokemon__types-container">
-                                {pokemon.type.map((value) => {
+                                {pokemon?.type?.map((value) => {
                                     const typeColor = BgColor[value.type.name];
                                     return (
                                         <div className="pokemon__types" key={value.slot} style={{ background: typeColor }}>
