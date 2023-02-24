@@ -153,23 +153,18 @@ const Pokedex = () => {
             ) : (
                 <>
                     <div className="container__pokemons-card">
-                        <div>
-                            {pokemonData ? (
-                                <PokemonCard url={`https://pokeapi.co/api/v2/pokemon/${searchQuery}`} />
-                            ) : (
-                                pokemons.length > 0 &&
-                                pokemons.slice((page - 1) * forPage, (page - 1) * forPage + forPage)
-                                    ?.map((item, index) => (
-                                        <PokemonCard
-                                            url={item.pokemon ? item.pokemon.url : item.url}
-                                            key={index}
-                                        />
-                                    ))
-                            )}
-
-
-
-                        </div>
+                        {pokemonData ? (
+                            <PokemonCard url={`https://pokeapi.co/api/v2/pokemon/${searchQuery}`} />
+                        ) : (
+                            pokemons.length > 0 &&
+                            pokemons.slice((page - 1) * forPage, (page - 1) * forPage + forPage)
+                                ?.map((item, index) => (
+                                    <PokemonCard
+                                        url={item.pokemon ? item.pokemon.url : item.url}
+                                        key={index}
+                                    />
+                                ))
+                        )}
                     </div>
                     <Pagination
                         page={page} setPage={setPage} totalPages={totalPages} />
