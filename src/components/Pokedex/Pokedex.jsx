@@ -79,7 +79,7 @@ const Pokedex = () => {
                 .catch((error) => {
                     console.error(error);
                     setError(
-                        "❌ No se ha encontrado el Pokemon. Intente de nuevo"
+                        "❌😭 Pokemon not found. Try it again"
                     );
                     setPokemonData(null);
                 });
@@ -105,7 +105,6 @@ const Pokedex = () => {
         setSearchInput("");
     };
 
-    console.log(pokemons);
 
     return (
         <div className="pokedex__container">
