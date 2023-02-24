@@ -26,7 +26,9 @@ const Pokedex = () => {
         const url = 'https://pokeapi.co/api/v2/type'
         axios
             .get(url)
-            .then(res => setTypes(res.data.results))
+            .then((res) => {
+                setTypes(res.data.results);
+            })
             .catch(err => console.log(err)),
 
             axios
@@ -151,19 +153,23 @@ const Pokedex = () => {
             ) : (
                 <>
                     <div className="container__pokemons-card">
-                        {pokemonData ? (
-                            <PokemonCard url={`https://pokeapi.co/api/v2/pokemon/${searchQuery}`} />
-                        ) : (
-                            pokemons.length > 0 &&
-                            pokemons.slice((page - 1) * forPage, (page - 1) * forPage + forPage)
-                                ?.map((item, index) => (
-                                    <PokemonCard
-                                        url={item.pokemon ? item.pokemon.url : item.url}
-                                        key={index}
-                                    />
-                                ))
-                        )}
+                        <div>
+                            {pokemonData ? (
+                                <PokemonCard url={`https://pokeapi.co/api/v2/pokemon/${searchQuery}`} />
+                            ) : (
+                                pokemons.length > 0 &&
+                                pokemons.slice((page - 1) * forPage, (page - 1) * forPage + forPage)
+                                    ?.map((item, index) => (
+                                        <PokemonCard
+                                            url={item.pokemon ? item.pokemon.url : item.url}
+                                            key={index}
+                                        />
+                                    ))
+                            )}
 
+
+
+                        </div>
                     </div>
                     <Pagination
                         page={page} setPage={setPage} totalPages={totalPages} />
