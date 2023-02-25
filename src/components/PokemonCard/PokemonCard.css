@@ -54,7 +54,7 @@
     width: 100%;
     height: 60%;
     position: absolute;
-    transition: transform 1s ease;
+    transition: transform 0.5s ease;
 }
 
 .pokemon__card-img:hover {
@@ -81,3 +81,22 @@
     transform: scale(1.1);
     color: black;
 }
+
+.pokemon__loading img {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    /* transform: rotate(360deg); */
+    /* animation: spin 2s linear infinite; */
+}
+
+/* @keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+} */
