@@ -34,7 +34,7 @@ const PokemonCard = ({ url }) => {
                     .finally(() => {
                         setLoading(false); // establecer loading en false después de la solicitud
                     });
-            }, 2000); // tiempo de espera de 2 segundos
+            }, 1000); // tiempo de espera de 1 segundo
         };
         fetchData();
     }, [url]);
@@ -46,7 +46,7 @@ const PokemonCard = ({ url }) => {
         <Link to={`/pokedex/${pokemon?.id}`}>
             <div className="pokemon__card-container"
                 style={{ background: ColorName(type) }}>
-                {loading ? ( // mensaje de carga condicional
+                {loading ? (
                     <div className="pokemon__loading">
                         <img src={loadingimg} />
                     </div>
